@@ -27,7 +27,8 @@
       </Hierarchy>
     </Dimension>
     <!-- Measures -->
-    <Measure aggregator="count" caption="Counter" column="montant" name="Counter"/>
+    <Measure aggregator="count" caption="count - Counter" column="counter" name="count - Counter"/>
+    <Measure aggregator="sum" caption="sum - Counter" column="counter" name="sum - Counter"/>
     <Measure aggregator="sum" caption="Somme" column="montant" name="Somme"/>
     <Measure aggregator="avg" caption="Moyenne" column="montant" name="Moyenne"/>
   </Cube>
