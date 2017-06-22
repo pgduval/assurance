@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="assurance">
+  <!-- Fact  -->
+  <Cube caption="Assurance" name="Assurance">
+    <Table name="fait_prime" schema="assurance"/>
+    <!-- Dimension temps -->
+    <Dimension foreignKey="date_transact" name="Temps" type="TimeDimension">
+      <Hierarchy allMemberName="All Years" hasAll="true" primaryKey="id_date">
+        <Table name="dim_temps"/>
+        <Level column="year" hideMemberIf="Never" levelType="TimeYears" name="Years" type="String" uniqueMembers="true"/>
+        <Level column="quarter_name" hideMemberIf="Never" levelType="TimeQuarters" name="Quarters" ordinalColumn="quarter" type="String" uniqueMembers="false"/>
+        <Level column="month_name" hideMemberIf="Never" levelType="TimeMonths" name="Months" ordinalColumn="month" type="String" uniqueMembers="false"/>
+      </Hierarchy>
+    </Dimension>
+<!-- Dimension Info -->
+    <Dimension foreignKey="id_info" name="Info">
+      <Hierarchy allMemberName="All Info" hasAll="true" primaryKey="id_info">
+        <Table name="dim_info"/>
+        <Level column="info" hideMemberIf="Never" levelType="Regular" name="Info" type="String" uniqueMembers="false"/>
+      </Hierarchy>
+    </Dimension>
+<!-- Dimension Status -->
+    <Dimension foreignKey="id_status" name="Status">
+      <Hierarchy allMemberName="All Status" hasAll="true" primaryKey="id_status">
+        <Table name="dim_status"/>
+        <Level column="label" hideMemberIf="Never" levelType="Regular" name="Transaction Type" type="String" uniqueMembers="false"/>
+      </Hierarchy>
+    </Dimension>
+    <!-- Measures -->
+    <Measure aggregator="count" caption="Counter" column="montant" name="Counter"/>
+    <Measure aggregator="sum" caption="Somme" column="montant" name="Somme"/>
+    <Measure aggregator="avg" caption="Moyenne" column="montant" name="Moyenne"/>
+  </Cube>
+</Schema>
